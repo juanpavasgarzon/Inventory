@@ -13,7 +13,7 @@ public class User : AuditedEntity, ISoftDelete
 
     [MaxLength(100)] public string Username { get; set; }
 
-    [MaxLength(100)] public string Password { get; set; }
+    [MaxLength(100)] public string? Password { get; set; }
 
     [MaxLength(100)] public bool State { get; set; }
 
@@ -21,9 +21,10 @@ public class User : AuditedEntity, ISoftDelete
 
     public bool IsDeleted { get; set; }
 
-    public User(string username, string password)
+    public User(string username, string password, bool state)
     {
         Username = username;
         Password = password;
+        State = state;
     }
 }

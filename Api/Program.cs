@@ -16,9 +16,7 @@ builder.Services.AddApiVersioning();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<InventoryContext>(
-    options => options.UseNpgsql(
-        builder.Configuration.GetConnectionString("StoreDatabase")
-    )
+    options => options.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456")
 );
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();

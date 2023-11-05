@@ -5,23 +5,17 @@ namespace Infrastructure.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly InventoryContext _context;
-    private readonly IServiceProvider _serviceProvider;
 
-    public UnitOfWork(InventoryContext context, IServiceProvider serviceProvider)
+    public UnitOfWork(InventoryContext context)
     {
         _context = context;
-        _serviceProvider = serviceProvider;
     }
 
     private IUserRepository? _userRepository;
 
     public IUserRepository UserRepository
     {
-        get
-        {
-            _userRepository ??= new UserRepository(_context);
-            return _userRepository;
-        }
+        get { return _userRepository ??= new UserRepository(_context); }
     }
 
     public async Task SaveChangesAsync()

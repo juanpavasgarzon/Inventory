@@ -22,7 +22,11 @@ public class UserDomain : IUserDomain
             throw new PasswordNotMatchException("Passwords not match");
         }
 
-        var user = new User(command.Username, command.Password);
+        var user = new User
+        {
+            Username = command.Username,
+            Password = command.Password
+        };
 
         return await _unitOfWork.UserRepository.CreateUserAsync(user);
     }

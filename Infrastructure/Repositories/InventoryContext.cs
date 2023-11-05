@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Ilse.Infrastructure.BaseContext.Context;
 using Infrastructure.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +14,10 @@ public class InventoryContext : BaseContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456");
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456");
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

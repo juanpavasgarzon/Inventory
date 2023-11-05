@@ -1,6 +1,6 @@
+using Asp.Versioning;
 using Api.Dtos;
 using Application.Services.Contracts;
-using Asp.Versioning;
 using Domain.Commands;
 using Domain.Entities;
 using Domain.Exceptions;
@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
-[Route("api/v{version:apiVersion}/[controller]")]
-[ApiVersion("1.0")]
 [ApiController]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public class UserController : ControllerBase
 {
     private readonly ILogger<UserController> _logger;
