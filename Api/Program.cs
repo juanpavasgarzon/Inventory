@@ -1,30 +1,34 @@
-using Application.Services.Product;
-using Application.Services.Product.Contracts;
-using Application.Services.Third;
-using Application.Services.Third.Contracts;
-using Domain.Services.Product;
-using Domain.Services.Product.Contracts;
-using Domain.Services.Third;
-using Domain.Services.Third.Contracts;
+using Application.Services;
+using Application.Services.Contracts;
+using Domain.Services;
+using Domain.Services.Contracts;
 using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSerilog();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddApiVersioning();
 builder.Services.AddSwaggerGen();
 
-// Products
-builder.Services.AddScoped<IProductDomain, ProductDomain>();
-builder.Services.AddScoped<IProductApplication, ProductApplication>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddDbContext<InventoryContext>(
+    options => options.UseNpgsql(
+        builder.Configuration.GetConnectionString("StoreDatabase")
+    )
+);
 
-// Thirds
-builder.Services.AddScoped<IThirdDomain, ThirdDomain>();
-builder.Services.AddScoped<IThirdApplication, ThirdApplication>();
-builder.Services.AddScoped<IThirdRepository, ThirdRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserApplication, UserApplication>();
+builder.Services.AddScoped<IUserDomain, UserDomain>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
