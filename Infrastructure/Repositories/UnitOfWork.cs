@@ -4,9 +4,9 @@ namespace Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly InventoryContext _context;
+    private readonly InventoryDbContext _context;
 
-    public UnitOfWork(InventoryContext context)
+    public UnitOfWork(InventoryDbContext context)
     {
         _context = context;
     }

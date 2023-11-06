@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioning();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<InventoryContext>(
+builder.Services.AddDbContext<InventoryDbContext>(
     options => options.UseNpgsql(
         "Host=localhost;Database=Inventory;Username=postgres;Password=123456"
     )

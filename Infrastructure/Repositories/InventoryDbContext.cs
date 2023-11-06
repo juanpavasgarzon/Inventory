@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class InventoryContext : DbContext
+public class InventoryDbContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
+    public required DbSet<User> Users { get; set; }
 
-    public InventoryContext()
+    public InventoryDbContext()
     {
     }
 
-    public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+    public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
     {
     }
 
@@ -21,10 +21,5 @@ public class InventoryContext : DbContext
         {
             optionsBuilder.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456");
         }
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
     }
 }

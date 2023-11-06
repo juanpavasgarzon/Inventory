@@ -37,7 +37,26 @@ public class UserController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error creating user");
+            _logger.LogError(ex, "Error while creating user");
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpPatch]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<int>> Inactivate(InactivateUserDto dto)
+    {
+        try
+        {
+            var command = new InactivateUserCommand(dto.UserId);
+            var user = await _userApplication.InactivateUserAsync(command);
+            return CreatedAtAction(nameof(Find), new { userId = user.Id }, new { userId = user.Id });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error while updating user");
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
         }
     }

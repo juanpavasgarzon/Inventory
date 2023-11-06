@@ -8,9 +8,9 @@ namespace Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly InventoryContext _context;
+    private readonly InventoryDbContext _context;
 
-    public UserRepository(InventoryContext context)
+    public UserRepository(InventoryDbContext context)
     {
         _context = context;
     }
@@ -51,5 +51,23 @@ public class UserRepository : IUserRepository
             Username = userModel.Username,
             State = userModel.State,
         });
+    }
+
+    public async Task<Entities.User> InactivateUserAsync(int userId)
+    {
+        var userModel = _context.Users.FirstOrDefault(model => model.Id == userId)
+                        ?? throw new UserNotFoundException($"User with userId:'{userId}' not found");
+
+        userModel.State = false;
+
+        _context.Users.Update(userModel);
+        await _context.SaveChangesAsync();
+
+        return new Entities.User
+        {
+            Id = userModel.Id,
+            Username = userModel.Username,
+            State = userModel.State,
+        };
     }
 }

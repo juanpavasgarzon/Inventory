@@ -24,4 +24,9 @@ public class UserApplication : IUserApplication
     {
         return await _userDomain.FindUserAsync(query);
     }
+
+    public async Task<User> InactivateUserAsync(InactivateUserCommand command)
+    {
+        return await _userDomain.InactivateUserAsync(command);
+    }
 }

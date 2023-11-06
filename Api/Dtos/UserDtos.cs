@@ -5,3 +5,7 @@ public record CreateUserDto(
     string Password,
     string PasswordConfirm
 );
+
+public record InactivateUserDto(
+    int UserId
+);

@@ -9,4 +9,6 @@ public interface IUserApplication
     Task<Entities.User> CreateUserAsync(CreateUserCommand user);
 
     Task<Entities.User> FindUserAsync(FindUserQuery query);
+
+    Task<Entities.User> InactivateUserAsync(InactivateUserCommand command);
 }

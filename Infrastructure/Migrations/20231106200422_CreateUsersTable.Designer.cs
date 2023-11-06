@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(InventoryContext))]
+    [DbContext(typeof(InventoryDbContext))]
     [Migration("20231106200422_CreateUsersTable")]
     partial class CreateUsersTable
     {

@@ -28,11 +28,18 @@ public class UserDomain : IUserDomain
             Password = command.Password
         };
 
+        await _unitOfWork.SaveChangesAsync();
+
         return await _unitOfWork.UserRepository.CreateUserAsync(user);
     }
 
     public async Task<User> FindUserAsync(FindUserQuery query)
     {
         return await _unitOfWork.UserRepository.FindUserAsync(query.UserId);
+    }
+
+    public async Task<User> InactivateUserAsync(InactivateUserCommand command)
+    {
+        return await _unitOfWork.UserRepository.InactivateUserAsync(command.UserId);
     }
 }
