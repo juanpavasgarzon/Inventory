@@ -1,12 +1,15 @@
-using Ilse.Infrastructure.BaseContext.Context;
 using Infrastructure.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class InventoryContext : BaseContext
+public class InventoryContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+
+    public InventoryContext()
+    {
+    }
 
     public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
     {

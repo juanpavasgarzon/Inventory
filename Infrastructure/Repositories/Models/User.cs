@@ -20,11 +20,5 @@ public class User : AuditedEntity, ISoftDelete
     [Timestamp] public uint Version { get; set; }
 
     public bool IsDeleted { get; set; }
-
-    public User(string username, string password, bool state)
-    {
-        Username = username;
-        Password = password;
-        State = state;
-    }
+    
 }

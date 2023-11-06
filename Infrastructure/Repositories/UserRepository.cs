@@ -19,7 +19,12 @@ public class UserRepository : IUserRepository
     {
         try
         {
-            var userModel = new User(user.Username, user.Password, true);
+            var userModel = new User
+            {
+                Username = user.Username,
+                Password = user.Password,
+                State = true
+            };
 
             _context.Users.Add(userModel);
             await _context.SaveChangesAsync();
