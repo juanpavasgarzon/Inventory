@@ -14,12 +14,4 @@ public class InventoryDbContext : DbContext
     public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
     {
     }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456");
-        }
-    }
 }
