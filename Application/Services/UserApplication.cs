@@ -15,6 +15,11 @@ public class UserApplication : IUserApplication
         _userDomain = userDomain;
     }
 
+    public async Task<List<User>> GetUsersAsync()
+    {
+        return await _userDomain.GetUsersAsync();
+    }
+
     public async Task<User> CreateUserAsync(CreateUserCommand command)
     {
         return await _userDomain.CreateUserAsync(command);

@@ -15,6 +15,11 @@ public class UserDomain : IUserDomain
         _unitOfWork = unitOfWork;
     }
 
+    public async Task<List<User>> GetUsersAsync()
+    {
+        return await _unitOfWork.UserRepository.GetUsersAsync();
+    }
+
     public async Task<User> CreateUserAsync(CreateUserCommand command)
     {
         if (command.Password != command.PasswordConfirm)

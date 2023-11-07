@@ -15,6 +15,17 @@ public class UserRepository : IUserRepository
         _context = context;
     }
 
+    public Task<List<Entities.User>> GetUsersAsync()
+    {
+        return _context.Users.Select(model => new Entities.User
+            {
+                Id = model.Id,
+                Username = model.Username,
+                State = model.State
+            }
+        ).ToListAsync();
+    }
+
     public async Task<Entities.User> CreateUserAsync(Entities.User user)
     {
         try

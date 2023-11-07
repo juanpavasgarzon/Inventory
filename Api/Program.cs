@@ -15,10 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioning();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddRouting(
+    options => options.LowercaseUrls = true
+);
+
 builder.Services.AddDbContext<InventoryDbContext>(
-    options => options.UseNpgsql(
-        "Host=localhost;Database=Inventory;Username=postgres;Password=123456"
-    )
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("StoreDatabase"))
 );
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();

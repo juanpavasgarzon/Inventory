@@ -6,6 +6,8 @@ namespace Application.Services.Contracts;
 
 public interface IUserApplication
 {
+    Task<List<Entities.User>> GetUsersAsync();
+
     Task<Entities.User> CreateUserAsync(CreateUserCommand user);
 
     Task<Entities.User> FindUserAsync(FindUserQuery query);
