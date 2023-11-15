@@ -20,7 +20,6 @@ builder.Services.AddDbContext<InventoryDbContext>(
 
 builder.Services.AddApplicationsAsScoped();
 builder.Services.AddDomainsAsScoped();
-
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
