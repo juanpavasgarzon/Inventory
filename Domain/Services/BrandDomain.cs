@@ -1,7 +1,8 @@
 using Domain.Services.Contracts;
+using Libraries.Abstractions.Contracts;
 
 namespace Domain.Services;
 
-public class BrandDomain : IBrandDomain
+public class BrandDomain : IBrandDomain, IDomain
 {
 }

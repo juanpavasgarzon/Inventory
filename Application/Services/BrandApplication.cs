@@ -1,7 +1,8 @@
 using Application.Services.Contracts;
+using Libraries.Abstractions.Contracts;
 
 namespace Application.Services;
 
-public class BrandApplication : IBrandApplication
+public class BrandApplication : IBrandApplication, IApplication
 {
 }

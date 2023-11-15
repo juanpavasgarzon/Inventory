@@ -1,8 +1,9 @@
 using Domain.Services.Contracts;
+using Libraries.Abstractions.Contracts;
 
 namespace Domain.Services;
 
-public class ProductDomain : IProductDomain
+public class ProductDomain : IProductDomain, IDomain
 {
     private readonly IUnitOfWork _unitOfWork;
 

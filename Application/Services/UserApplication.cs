@@ -3,10 +3,11 @@ using Domain.Commands;
 using Domain.Entities;
 using Domain.Queries;
 using Domain.Services.Contracts;
+using Libraries.Abstractions.Contracts;
 
 namespace Application.Services;
 
-public class UserApplication : IUserApplication
+public class UserApplication : IUserApplication, IApplication
 {
     private readonly IUserDomain _userDomain;
 

@@ -3,10 +3,11 @@ using Domain.Entities;
 using Domain.Exceptions;
 using Domain.Queries;
 using Domain.Services.Contracts;
+using Libraries.Abstractions.Contracts;
 
 namespace Domain.Services;
 
-public class UserDomain : IUserDomain
+public class UserDomain : IUserDomain, IDomain
 {
     private readonly IUnitOfWork _unitOfWork;
 

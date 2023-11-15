@@ -8,11 +8,10 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\Libraries\Libraries.csproj" />
+      <PackageReference Include="Asp.Versioning.Mvc" Version="7.1.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Scrutor" Version="4.2.2" />
     </ItemGroup>
-
-
 
 
 
