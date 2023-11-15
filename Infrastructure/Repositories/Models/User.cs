@@ -1,11 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Ilse.Infrastructure.BaseContext;
-using Ilse.Infrastructure.BaseContext.Entities;
 
 namespace Infrastructure.Repositories.Models;
 
-public class User : AuditedEntity, ISoftDelete
+public class User
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,5 +18,4 @@ public class User : AuditedEntity, ISoftDelete
     [Timestamp] public uint Version { get; set; }
 
     public bool IsDeleted { get; set; }
-    
 }

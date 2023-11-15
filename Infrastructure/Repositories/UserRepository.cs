@@ -15,9 +15,9 @@ public class UserRepository : IUserRepository
         _context = context;
     }
 
-    public Task<List<Entities.User>> GetUsersAsync()
+    public async Task<List<Entities.User>> GetUsersAsync()
     {
-        return _context.Users.Select(model => new Entities.User
+        return await _context.Users.Select(model => new Entities.User
             {
                 Id = model.Id,
                 Username = model.Username,
