@@ -1,6 +1,5 @@
 using Domain.Entities;
 using Domain.Services.Contracts;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
@@ -13,15 +12,9 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public async Task<List<Product>> GetProductAsync()
+    public Task<List<Product>> GetProductAsync()
     {
-        return await _context.Products
-            .Select(model => new Product
-                {
-                    Id = model.Id
-                }
-            )
-            .ToListAsync();
+        throw new NotImplementedException();
     }
 
     public Task<Product> CreateProductAsync()

@@ -5,13 +5,6 @@ namespace Infrastructure.Repositories.Models;
 
 public class Supplier
 {
-    public Supplier(string name, string address, string phone)
-    {
-        Name = name;
-        Address = address;
-        Phone = phone;
-    }
-
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
@@ -21,4 +14,6 @@ public class Supplier
     [MaxLength(100)] public string Address { get; set; }
 
     [MaxLength(100)] public string Phone { get; set; }
+
+    public ICollection<Product> Products { get; set; } = new List<Product>();
 }

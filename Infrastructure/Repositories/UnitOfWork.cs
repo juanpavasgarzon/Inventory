@@ -8,6 +8,7 @@ public class UnitOfWork : IUnitOfWork
 
     public UnitOfWork(InventoryDbContext context)
     {
+        context.Database.EnsureCreated();
         _context = context;
     }
 

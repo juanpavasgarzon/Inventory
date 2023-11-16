@@ -5,33 +5,6 @@ namespace Infrastructure.Repositories.Models;
 
 public class Product
 {
-    public Product(
-        string code,
-        string name,
-        string description,
-        float unitPrice,
-        float quantityAvailable,
-        int id,
-        int productTypeId,
-        int categoryId,
-        int brandId,
-        int supplierId,
-        Dictionary<string, string> observations
-    )
-    {
-        Code = code;
-        Name = name;
-        Description = description;
-        UnitPrice = unitPrice;
-        QuantityAvailable = quantityAvailable;
-        Id = id;
-        ProductTypeId = productTypeId;
-        CategoryId = categoryId;
-        BrandId = brandId;
-        SupplierId = supplierId;
-        Observations = observations;
-    }
-
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
@@ -48,19 +21,21 @@ public class Product
 
     public int ProductTypeId { get; set; }
 
-    public ProductType ProductType { get; set; } = null!;
+    public ProductType ProductType { get; set; }
 
     public int CategoryId { get; set; }
 
-    public Category Category { get; set; } = null!;
+    public Category Category { get; set; }
 
     public int BrandId { get; set; }
 
-    public Brand Brand { get; set; } = null!;
+    public Brand Brand { get; set; }
 
     public int SupplierId { get; set; }
 
-    public Supplier Supplier { get; set; } = null!;
+    public Supplier Supplier { get; set; }
 
     public Dictionary<string, string> Observations { get; set; }
+
+    [Timestamp] public uint Version { get; set; }
 }
