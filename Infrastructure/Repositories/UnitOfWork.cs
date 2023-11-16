@@ -38,7 +38,7 @@ public class UnitOfWork : IUnitOfWork
     public IProductTypeRepository ProductTypeRepository
     {
         get { return _productTypeRepository ??= new ProductTypeRepository(_context); }
-    }
+    } 
 
     private ISupplierRepository? _supplierRepository;
 

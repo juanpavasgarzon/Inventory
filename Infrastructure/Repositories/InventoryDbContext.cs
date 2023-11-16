@@ -5,18 +5,6 @@ namespace Infrastructure.Repositories;
 
 public class InventoryDbContext : DbContext
 {
-    public required DbSet<User> Users { get; set; }
-
-    public required DbSet<Brand> Brands { get; set; }
-
-    public required DbSet<Category> Categories { get; set; }
-
-    public required DbSet<ProductType> ProductTypes { get; set; }
-
-    public required DbSet<Supplier> Suppliers { get; set; }
-
-    public required DbSet<Product> Products { get; set; }
-
     public InventoryDbContext()
     {
     }
@@ -29,4 +17,16 @@ public class InventoryDbContext : DbContext
     {
         optionsBuilder.UseNpgsql("Host=localhost;Database=Inventory;Username=postgres;Password=123456");
     }
+
+    public required DbSet<User> Users { get; set; }
+
+    public required DbSet<Brand> Brands { get; set; }
+
+    public required DbSet<Category> Categories { get; set; }
+
+    public required DbSet<ProductType> ProductTypes { get; set; }
+
+    public required DbSet<Supplier> Suppliers { get; set; }
+
+    public required DbSet<Product> Products { get; set; }
 }
