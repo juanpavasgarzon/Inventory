@@ -13,7 +13,7 @@ public static class Extensions
                 .AddClasses(c => c.AssignableTo<IApplication>())
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsMatchingInterface()
-                .WithTransientLifetime()
+                .WithScopedLifetime()
         );
     }
 
@@ -24,7 +24,7 @@ public static class Extensions
                 .AddClasses(c => c.AssignableTo<IDomain>())
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsMatchingInterface()
-                .WithTransientLifetime()
+                .WithScopedLifetime()
         );
     }
 }
