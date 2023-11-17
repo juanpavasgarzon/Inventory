@@ -1,12 +1,14 @@
+using Domain.Entities;
+
 namespace Domain.Services.Contracts;
 
 public interface IUserRepository
 {
-    Task<List<Entities.User>> GetUsersAsync();
+    Task<List<User>> GetUsersAsync();
 
-    Task<Entities.User> CreateUserAsync(Entities.User user);
+    Task<int> CreateUserAsync(User user);
 
-    Task<Entities.User> FindUserAsync(int userId);
+    Task<User> FindUserAsync(int userId);
 
-    Task<Entities.User> InactivateUserAsync(int userId);
+    Task InactivateUserAsync(int userId);
 }

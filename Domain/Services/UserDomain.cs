@@ -21,7 +21,7 @@ public class UserDomain : IUserDomain, IDomain
         return await _unitOfWork.UserRepository.GetUsersAsync();
     }
 
-    public async Task<User> CreateUserAsync(CreateUserCommand command)
+    public async Task<int> CreateUserAsync(CreateUserCommand command)
     {
         if (command.Password != command.PasswordConfirm)
         {
@@ -34,8 +34,6 @@ public class UserDomain : IUserDomain, IDomain
             Password = command.Password
         };
 
-        await _unitOfWork.SaveChangesAsync();
-
         return await _unitOfWork.UserRepository.CreateUserAsync(user);
     }
 
@@ -44,8 +42,8 @@ public class UserDomain : IUserDomain, IDomain
         return await _unitOfWork.UserRepository.FindUserAsync(query.UserId);
     }
 
-    public async Task<User> InactivateUserAsync(InactivateUserCommand command)
+    public async Task InactivateUserAsync(int userId)
     {
-        return await _unitOfWork.UserRepository.InactivateUserAsync(command.UserId);
+        await _unitOfWork.UserRepository.InactivateUserAsync(userId);
     }
 }

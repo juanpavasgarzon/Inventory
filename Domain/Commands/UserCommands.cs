@@ -5,7 +5,3 @@ public record CreateUserCommand(
     string Password,
     string PasswordConfirm
 );
-
-public record InactivateUserCommand(
-    int UserId
-);

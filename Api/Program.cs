@@ -13,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioningRouting();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddDbContext<InventoryDbContext>(
     options => options.UseNpgsql(builder.Configuration.GetConnectionString("StoreDatabase"))

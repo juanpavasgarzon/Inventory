@@ -7,9 +7,9 @@ public interface IUserDomain
 {
     Task<List<Entities.User>> GetUsersAsync();
 
-    Task<Entities.User> CreateUserAsync(CreateUserCommand command);
+    Task<int> CreateUserAsync(CreateUserCommand command);
 
     Task<Entities.User> FindUserAsync(FindUserQuery query);
 
-    Task<Entities.User> InactivateUserAsync(InactivateUserCommand command);
+    Task InactivateUserAsync(int userId);
 }

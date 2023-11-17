@@ -21,7 +21,7 @@ public class UserApplication : IUserApplication, IApplication
         return await _userDomain.GetUsersAsync();
     }
 
-    public async Task<User> CreateUserAsync(CreateUserCommand command)
+    public async Task<int> CreateUserAsync(CreateUserCommand command)
     {
         return await _userDomain.CreateUserAsync(command);
     }
@@ -31,8 +31,8 @@ public class UserApplication : IUserApplication, IApplication
         return await _userDomain.FindUserAsync(query);
     }
 
-    public async Task<User> InactivateUserAsync(InactivateUserCommand command)
+    public async Task InactivateUserAsync(int userId)
     {
-        return await _userDomain.InactivateUserAsync(command);
+        await _userDomain.InactivateUserAsync(userId);
     }
 }
