@@ -7,7 +7,6 @@ public static class Extensions
 {
     public static void AddApiVersioningRouting(this IServiceCollection services)
     {
-        services.AddApiVersioning();
         services.AddRouting(options => options.LowercaseUrls = true);
         services.AddApiVersioning(options =>
         {
